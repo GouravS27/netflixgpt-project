@@ -1,6 +1,11 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidate } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -10,17 +15,54 @@ const Login = () => {
   const password = useRef(null);
   const fullName = useRef(null);
 
-
   const toggleSignIn = () => {
     setIsSignInForm(!isSignInForm);
   };
 
   const handleFormButton = () => {
     // Validate the form data
-
     const msg = checkValidate(email.current.value, password.current.value);
     setErrvalidation(msg);
 
+    // Validation Error
+    if (msg) return;
+
+    //SignUp/SignIn -- User details saving in firebase
+    if (!isSignInForm) {
+      //Creating User(Code from firebase)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode || errorMessage)
+            setErrvalidation("Invalid User Details");
+        });
+    } else {
+      //Login User(Code from firebase)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode || errorMessage)
+            setErrvalidation("Invalid User Details");
+        });
+    }
   };
 
   return (
@@ -44,19 +86,19 @@ const Login = () => {
         {/* Full Name on Sign Up */}
         {!isSignInForm && (
           <input
-          ref={fullName}
+            ref={fullName}
             type="text"
             className="p-4 my-3 w-full rounded bg-transparent border"
             placeholder="Full Name"
           />
         )}
 
-        {/* Email or Mobile Number */}
+        {/* Email  */}
         <input
           ref={email}
           type="text"
           className="p-4 my-3 w-full rounded bg-transparent border"
-          placeholder="Email or Mobile Number"
+          placeholder="Email"
         />
 
         {/* password */}

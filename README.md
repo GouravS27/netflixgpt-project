@@ -103,11 +103,18 @@ firebase deploy
 4. Header Component
 5. SignIn/Up form Component
         - Form Validation(REGEX)
+        - useRef Hook
 6. Configure FIREBASE 
         - firebase login
         - firebase init
         - firebase deploy
-
+7. Create User and SignIn User Account in firebase
+        - createUserWithEmailAndPassword
+        - signInWithEmailAndPassword
+8. Storing User Details in REDUX Toolkit
+        - npm install @reduxjs/toolkit react-redux
+        - utils/appStore.js, userSlice.js 
+        - (Slice -> Store -> Provider(App.jsx))
 
 ## **Features for the Application**
 
