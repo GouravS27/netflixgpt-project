@@ -115,6 +115,14 @@ firebase deploy
         - npm install @reduxjs/toolkit react-redux
         - utils/appStore.js, userSlice.js 
         - (Slice -> Store -> Provider(App.jsx))
+        - createUser to Store || signInUser to Store (onAuthStateChanged) 
+        - Navigate to browse Page
+
+9. Header
+        - Netflix Logo
+        - User Logo
+        - Button : Sign Out (Navigate to SignIn Page) - signOut func from FireBase
+        - Hide Sign Out in SignIn Page (Condition : User in Redux Store(useSelector))
 
 ## **Features for the Application**
 
