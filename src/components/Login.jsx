@@ -7,72 +7,78 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
-  const [errValidation, setErrvalidation] = useState("");
+  const [errValidation, setErrvalidation] = useState();
 
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const toggleSignIn = () => setIsSignInForm(!isSignInForm);
+  const toggleSignIn = () => {
+    setIsSignInForm(!isSignInForm);
+  };
 
-  const handleFormButton = async () => {
-    // Validate inputs
-    const msg = checkValidate(
-      email.current.value.trim(),
-      password.current.value.trim()
-    );
+  const handleFormButton = () => {
+    // Validate the form data
+    const msg = checkValidate(email.current.value, password.current.value);
     setErrvalidation(msg);
+
+    // Validation Error
     if (msg) return;
 
-    try {
-      if (!isSignInForm) {
-        // Sign Up user
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email.current.value.trim(),
-          password.current.value.trim()
-        );
+    //SignUp/SignIn -- User details saving in firebase
+    if (!isSignInForm) {
+      //Creating User(Code from firebase)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
 
-        const user = userCredential.user;
-
-        // Update profile with full name
-        await updateProfile(user, {
-          displayName: fullName.current.value.trim(),
+          updateProfile(user, {
+            displayName: fullName.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
+            .catch((error) => {
+              setErrvalidation(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode || errorMessage)
+            setErrvalidation("Invalid User Details");
         });
-
-        // Save to Redux
-        const { uid, email: userEmail, displayName } = user;
-        dispatch(addUser({ uid, email: userEmail, displayName }));
-
-        navigate("/browse");
-      } else {
-        // Sign In user
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          email.current.value.trim(),
-          password.current.value.trim()
-        );
-
-        const user = userCredential.user;
-
-        // Save to Redux
-        const { uid, email: userEmail, displayName } = user;
-        dispatch(addUser({ uid, email: userEmail, displayName }));
-
-        navigate("/browse");
-      }
-    } catch (error) {
-      console.error("Auth Error:", error);
-      setErrvalidation("Invalid User Details");
+    } else {
+      //Login User(Code from firebase)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode || errorMessage)
+            setErrvalidation("Invalid User Details");
+        });
     }
   };
 
@@ -83,7 +89,7 @@ const Login = () => {
         <img
           className="w-screen h-screen absolute z-0"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/cb72daa5-bd8d-408b-b949-1eaef000c377/web/IN-en-20250825-TRIFECTA-perspective_a3209894-0b01-4ddb-b57e-f32165e20a3f_large.jpg"
-          alt="Background"
+          alt=""
         />
       </div>
       <form
@@ -94,6 +100,7 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Get Started"}
         </h1>
 
+        {/* Full Name on Sign Up */}
         {!isSignInForm && (
           <input
             ref={fullName}
@@ -103,6 +110,7 @@ const Login = () => {
           />
         )}
 
+        {/* Email  */}
         <input
           ref={email}
           type="text"
@@ -110,6 +118,7 @@ const Login = () => {
           placeholder="Email"
         />
 
+        {/* password */}
         <input
           ref={password}
           type="password"
@@ -117,8 +126,10 @@ const Login = () => {
           placeholder="Password"
         />
 
+        {/* validation error */}
         <p className="text-[#E50914] text-sm font-medium">{errValidation}</p>
 
+        {/* Sign In / Up */}
         <button
           className="bg-[#E50914] text-white font-bold my-3 py-3 rounded w-full"
           onClick={handleFormButton}
@@ -126,6 +137,7 @@ const Login = () => {
           {isSignInForm ? "Let's Go!" : "Sign Up"}
         </button>
 
+        {/* New User to Sign Up */}
         <p
           className="py-3 cursor-pointer hover:text-gray-300 hover:font-light transition"
           onClick={toggleSignIn}

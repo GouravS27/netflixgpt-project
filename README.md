@@ -101,16 +101,20 @@ firebase deploy
 2. Configure Tailwind-CSS 
 3. Configure React Router (npm i -D react-router-dom)
 4. Header Component
+
 5. SignIn/Up form Component
         - Form Validation(REGEX)
         - useRef Hook
+
 6. Configure FIREBASE 
         - firebase login
         - firebase init
         - firebase deploy
+
 7. Create User and SignIn User Account in firebase
         - createUserWithEmailAndPassword
         - signInWithEmailAndPassword
+
 8. Storing User Details in REDUX Toolkit
         - npm install @reduxjs/toolkit react-redux
         - utils/appStore.js, userSlice.js 
@@ -123,6 +127,39 @@ firebase deploy
         - User Logo
         - Button : Sign Out (Navigate to SignIn Page) - signOut func from FireBase
         - Hide Sign Out in SignIn Page (Condition : User in Redux Store(useSelector))
+        - After Sign Out - Unable to Access Browse Page
+        - After Sign In - Unable to Access Browse Page
+        - Unsubscribed onAuthStateChange callback
+
+10. URL Constants (Saving URL)
+        - Netflix Logo
+        - AVATAR LOGO
+        - API call (TMDB Movie - Now Playing)
+
+11. Fetch Movies from TMDB Application
+        - Apply for API Token & Key
+        - Explore TMDB Documentation for API Calls
+        - GET nowPlaying movies data in browser page
+
+12. Browse Page
+        - API Fetch(TMDB Movie - Now Playing)
+        - MainContainer
+                - Video Background
+                        - Fetch Video from TMDB Movies videos - get youtubeVideoKey
+                        - Copy Embed Code from Youtube to display Video
+                - VideoTitle
+        - SecondaryContainer
+                - MovieList * n 
+                - cards * n 
+
+13. Storing Movies inside MovieSlice (REDUX)
+        - Created movieSlice and store in appStore
+        - Storing movies from api json.results to MovieSlice
+
+14. CUSTOM HOOKS
+        - useNowPlayingMovies (Fetch Data from TMDB API and updating in store) - using in Browse Components
+
+
 
 ## **Features for the Application**
 
