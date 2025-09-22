@@ -147,17 +147,26 @@ firebase deploy
                 - Video Background
                         - Fetch Video from TMDB Movies videos - get youtubeVideoKey
                         - Copy Embed Code from Youtube to display Video
+                        - Custom Hook(useTrailerVideo) - fetch Trailer Video
+                        - adding "?autoplay=1&mute=1" - for autoplaying the video
                 - VideoTitle
+
         - SecondaryContainer
                 - MovieList * n 
+                        - Popular
+                        - Now Playing
+                        - Trending
+                        - Horror
                 - cards * n 
 
 13. Storing Movies inside MovieSlice (REDUX)
         - Created movieSlice and store in appStore
         - Storing movies from api json.results to MovieSlice
+        - Storing movie trailer 
 
 14. CUSTOM HOOKS
         - useNowPlayingMovies (Fetch Data from TMDB API and updating in store) - using in Browse Components
+        - useTrailerVideo - Fetch Movie Trailer from API and Displaying
 
 
 

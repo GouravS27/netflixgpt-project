@@ -17,7 +17,7 @@ const Body = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router}/>;
 };
 
 export default Body;

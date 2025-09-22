@@ -38,25 +38,19 @@ const Header = () => {
     });
 
     //Component Unmounting (CleanUp)
-    return ()=> unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   return (
     <div className="flex justify-between absolute bg-black-400 w-screen px-8 bg-gradient-to-b from-black z-10">
-      <img
-        className="w-44 mt-2"
-        src={NETFLIX_LOGO}
-        alt="Netflix_LOGO"
-      />
+      <img className="w-44 mt-2" src={NETFLIX_LOGO} alt="Netflix_LOGO" />
       {user && (
         <div className="flex items-center justify-center">
-          <img
-            className="w-12 h-12 mx-3"
-            src={AVATAR_LOGO}
-            alt=""
-          />
+          <img className="w-12 h-12 mx-3 rounded-sm" src={AVATAR_LOGO} alt="" />
           <div className="flex flex-col items-center justify-center">
-            <div className="font-light text-white">{user.displayName}</div>
+            <div className="font-light italic text-white">
+              {user.displayName}
+            </div>
             <button
               className="font-bold text-white hover:text-gray-300 cursor-pointer"
               onClick={handleSignOut}
