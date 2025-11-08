@@ -12,7 +12,7 @@ if (overview) {
 
   return (
     <div
-      className="absolute inset-0 aspect-video flex flex-col justify-center  px-12 text-white bg-gradient-to-r from-black overflow-x-hidden"
+      className="absolute inset-0 aspect-video flex flex-col justify-center px-12 -mt-20 text-white bg-gradient-to-r from-black overflow-x-hidden"
     >
       <h1 className="text-6xl font-bold opacity-90">{title}</h1>
       <p

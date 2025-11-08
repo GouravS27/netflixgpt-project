@@ -135,6 +135,7 @@ firebase deploy
         - Netflix Logo
         - AVATAR LOGO
         - API call (TMDB Movie - Now Playing)
+        - IMG_CDN (Image URL)
 
 11. Fetch Movies from TMDB Application
         - Apply for API Token & Key
@@ -167,6 +168,7 @@ firebase deploy
 14. CUSTOM HOOKS
         - useNowPlayingMovies (Fetch Data from TMDB API and updating in store) - using in Browse Components
         - useTrailerVideo - Fetch Movie Trailer from API and Displaying
+        - usePopularMovies - Fetch Popular Movie List
 
 
 
