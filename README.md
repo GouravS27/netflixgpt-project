@@ -168,9 +168,7 @@ firebase deploy
 14. CUSTOM HOOKS
         - useNowPlayingMovies (Fetch Data from TMDB API and updating in store) - using in Browse Components
         - useTrailerVideo - Fetch Movie Trailer from API and Displaying
-        - usePopularMovies - Fetch Popular Movie List
-
-
+        - usePopularMovies - Fetch Popular Movie List (Many More Hooks to fetch movies as per title)
 
 ## **Features for the Application**
 
