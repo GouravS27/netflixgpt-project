@@ -45,15 +45,16 @@ const Header = () => {
     <div
       className="
       flex justify-between items-center 
-      absolute left-0 right-0 top-0 
-      bg-black-400 bg-gradient-to-b from-black z-10 
-      px-6 sm:px-8 w-full overflow-x-hidden
+      fixed z-30 left-0 right-0 top-0 
+      bg-black-400 bg-gradient-to-b from-black
+      px-6 sm:px-8 w-full overflow-x-hidden 
     "
     >
       <img className="w-44 mt-2" src={NETFLIX_LOGO} alt="Netflix_LOGO" />
 
       {user && (
         <div className="flex items-center justify-center">
+          <button>Search</button>
           <img className="w-12 h-12 mx-3 rounded-sm" src={AVATAR_LOGO} alt="" />
           <div className="flex flex-col items-center justify-center">
             <div className="font-light italic text-white">

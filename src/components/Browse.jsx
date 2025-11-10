@@ -5,6 +5,7 @@ import { useTrendingMovies } from "../customHooks/useTrendingMovies";
 import { useUpcomingMovies } from "../customHooks/useUpcomingMovies";
 import MainContainer from "./browse/MainContainer";
 import SecondaryContainer from "./browse/SecondaryContainer";
+import Footer from "./Footer";
 import Header from "./Header";
 
 const Browse = () => {
@@ -20,6 +21,7 @@ const Browse = () => {
       <Header />
       <MainContainer/>
       <SecondaryContainer/>
+      <Footer/>
     </div>
   );
 };
