@@ -49,6 +49,8 @@
         - After Sign Out - Unable to Access Browse Page
         - After Sign In - Unable to Access Browse Page
         - Unsubscribed onAuthStateChange callback
+        - GPT Search Feature
+                - 
 
 10. URL Constants (Saving URL)
         - Netflix Logo

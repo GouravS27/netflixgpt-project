@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { AVATAR_LOGO, NETFLIX_LOGO } from "../utils/constants";
+import { toggleSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ const Header = () => {
         console.error("Error signing out:", error);
         navigate("/error");
       });
+  };
+   const handleGPTSearch = () => {
+    dispatch(toggleSearchView());
   };
 
   useEffect(() => {
@@ -54,14 +58,19 @@ const Header = () => {
 
       {user && (
         <div className="flex items-center justify-center">
-          <button>Search</button>
+          {/* GPT Search */}
+          <button className="px-16 py-3 text-white rounded-md bg-gradient-to-b from-red-700 to-red-400 font-bold opacity-85 cursor-pointer hover:text-gray-300 hover:from-red-800 hover:to-red-400"
+                  onClick={handleGPTSearch}>
+            GPT Search
+          </button>
+
           <img className="w-12 h-12 mx-3 rounded-sm" src={AVATAR_LOGO} alt="" />
           <div className="flex flex-col items-center justify-center">
             <div className="font-light italic text-white">
               {user.displayName}
             </div>
             <button
-              className="font-bold text-white hover:text-gray-300 cursor-pointer"
+              className="font-bold text-white hover:text-red-400 cursor-pointer"
               onClick={handleSignOut}
             >
               Sign Out
