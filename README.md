@@ -95,6 +95,14 @@
         - Added Contact Info
         - Added Social Media Link
 
+16. OPENAI API 
+        - created the OPEN AI Secret Key and store it in my constant file
+        - npm i openai (explore documentation) -- PAID
+        - npm install @google/generative-ai -- GEMINI
+        - created the GEMINI API Secret Key and store it in my constant file
+        - Implemented handleGPTSearchClick with GEMINI Documentation
+
+
 ## **Features for the Application**
 
 - Login/SignUp
