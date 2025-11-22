@@ -16,6 +16,9 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   // console.log(user)
 
+  const GPTSearchPage = useSelector((store) => store.gpt.showGptSearch);
+  // console.log(GPTSearchPage)
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -24,7 +27,7 @@ const Header = () => {
         navigate("/error");
       });
   };
-   const handleGPTSearch = () => {
+  const handleGPTSearch = () => {
     dispatch(toggleSearchView());
   };
 
@@ -59,9 +62,11 @@ const Header = () => {
       {user && (
         <div className="flex items-center justify-center">
           {/* GPT Search */}
-          <button className="px-16 py-3 text-white rounded-md bg-gradient-to-b from-red-700 to-red-400 font-bold opacity-85 cursor-pointer hover:text-gray-300 hover:from-red-800 hover:to-red-400"
-                  onClick={handleGPTSearch}>
-            GPT Search
+          <button
+            className="px-16 py-3 text-white rounded-md bg-gradient-to-b from-red-700 to-red-400 font-bold opacity-85 cursor-pointer hover:text-gray-300 hover:from-red-800 hover:to-red-400"
+            onClick={handleGPTSearch}
+          >
+            {!GPTSearchPage ? "GPT Search" : "Explore Netflix"}
           </button>
 
           <img className="w-12 h-12 mx-3 rounded-sm" src={AVATAR_LOGO} alt="" />

@@ -20,7 +20,7 @@ const Browse = () => {
   useOnlyNetflix();
 
   return (
-    <div className="bg-black">
+    <div>
       <Header />
 
       {showGPTSearch ? (

@@ -16,3 +16,5 @@ export const API_OPTIONS = {
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/"
 
 export const BG_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/cb72daa5-bd8d-408b-b949-1eaef000c377/web/IN-en-20250825-TRIFECTA-perspective_a3209894-0b01-4ddb-b57e-f32165e20a3f_large.jpg"
+
+export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_KEY;

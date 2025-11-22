@@ -6,7 +6,7 @@ const GPTSearch = () => {
   return (
     <div>
       <img
-        className="absolute"
+        className="absolute -z-10"
         src={BG_IMG}
         alt=""
       />
