@@ -41,7 +41,7 @@ const GptSearchBar = () => {
       // console.log(result)
       const text = result.response.text();
 
-      const moviesArray = text?.split(", ");
+      const moviesArray = text?.split(",");
       // console.log(moviesArray);
 
       // for each movies - TMDB Search
@@ -65,7 +65,7 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className="pt-[7%] flex justify-center">
       <form
         className="w-1/2 bg-black grid grid-cols-12 rounded-lg "
         onSubmit={(e) => e.preventDefault()}
@@ -74,7 +74,7 @@ const GptSearchBar = () => {
           ref={searchRef}
           type="text"
           placeholder="Search Movie or Web Series"
-          className="p-4 m-4 col-span-9 text-white font-semibold border-2 border-gray-500 rounded-lg text-lg bg-black uppercase"
+          className="p-4 m-4 col-span-9 text-white font-semibold border-2 border-gray-500 rounded-lg text-lg bg-black capitalize"
         />
         <button
           className="font-bold bg-gradient-to-b from-red-700 to-red-400 cursor-pointer text-lg hover:from-red-800 hover:to-red-400 col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
