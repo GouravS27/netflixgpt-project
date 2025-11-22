@@ -95,7 +95,7 @@
         - Added Contact Info
         - Added Social Media Link
 
-16. OPENAI API 
+16. GEMINI API 
         - created the OPEN AI Secret Key and store it in my constant file
         - npm i openai (explore documentation) -- PAID
         - npm install @google/generative-ai -- GEMINI
